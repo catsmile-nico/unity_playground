@@ -59,6 +59,10 @@ public class Fox : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckCollider.position, groundCheckRadius, groundLayer);
         if (colliders.Length > 0)
             isGrounded = true;
+
+        //if grounded "Jump" bool in animator disabled
+        //if (isGrounded)
+        animator.SetBool("Jump", !isGrounded);
     }
 
     // Update is called once per frame
@@ -75,7 +79,10 @@ public class Fox : MonoBehaviour
             isRunning = false;
 
         if (Input.GetButtonDown("Jump"))
+        {
+            animator.SetBool("Jump", true);
             isJumping = true;
+        }
         else if (Input.GetButtonUp("Jump"))
             isJumping = false;
 
@@ -83,6 +90,9 @@ public class Fox : MonoBehaviour
             isCrouched = true;
         else if (Input.GetButtonUp("Crouch"))
             isCrouched = false;
+
+        //Set yVelocity in animator
+        animator.SetFloat("yVelocity", rb.velocity.y);
 
     }   
 
@@ -92,7 +102,7 @@ public class Fox : MonoBehaviour
         //if player is grounded and space pressed Jump
         if(isGrounded && jumpFlag)
         {
-            isGrounded = false;
+            //isGrounded = false;
             jumpFlag = false;
             rb.AddForce(new Vector2(0f,jumpPower));
         }
