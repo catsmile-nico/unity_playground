@@ -10,14 +10,19 @@ public class Fox : MonoBehaviour
     // Private
     Rigidbody2D rb;
     Animator animator;
+    [SerializeField] Collider2D standingCollider;
     [SerializeField] Transform groundCheckCollider;
+    [SerializeField] Transform overheadCheckCollider;
     [SerializeField] LayerMask groundLayer;
-
+    
     const float groundCheckRadius = 0.2f;
+    const float overheadCheckRadius = 0.1f;
     float horizontalValue;
     float runSpeedModifier = 2f;
+    float crouchSpeedModifier = 0.5f;
     [SerializeField] float jumpPower = 100;
-    bool jump = false;
+    bool isJumping = false;
+    [SerializeField] bool isCrouched = false;
     bool facingRight = true;
     [SerializeField] bool isRunning = false;
     [SerializeField] bool isGrounded = false;
@@ -42,7 +47,7 @@ public class Fox : MonoBehaviour
     void FixedUpdate()
     {
         GroundCheck();
-        Move(horizontalValue, jump);
+        Move(horizontalValue, isJumping, isCrouched);
     }
 
     void GroundCheck()
@@ -70,13 +75,20 @@ public class Fox : MonoBehaviour
             isRunning = false;
 
         if (Input.GetButtonDown("Jump"))
-            jump = true;
+            isJumping = true;
         else if (Input.GetButtonUp("Jump"))
-            jump = false;
+            isJumping = false;
+
+        if (Input.GetButtonDown("Crouch"))
+            isCrouched = true;
+        else if (Input.GetButtonUp("Crouch"))
+            isCrouched = false;
+
     }   
 
-    void Move(float direction, bool jumpFlag)
+    void Move(float direction, bool jumpFlag, bool crouchFlag)
     {
+        #region Jump
         //if player is grounded and space pressed Jump
         if(isGrounded && jumpFlag)
         {
@@ -84,10 +96,32 @@ public class Fox : MonoBehaviour
             jumpFlag = false;
             rb.AddForce(new Vector2(0f,jumpPower));
         }
+        #endregion
+
+        //Left right value
+        float xVal = direction * speed * 100 * Time.fixedDeltaTime;
+
+        #region Crouch
+        //check overhead
+        if(!crouchFlag)
+            if(Physics2D.OverlapCircle(overheadCheckCollider.position, overheadCheckRadius, groundLayer))
+                crouchFlag = true;
+        
+        //if crouch, disable standing collider + animate crouching + reduce speed
+        //if release, undo the above
+        if(isGrounded)
+            standingCollider.enabled = !crouchFlag;
+        if(crouchFlag)
+            xVal *= crouchSpeedModifier;
+
+        animator.SetBool("Crouch", crouchFlag);
+            
+           
+        #endregion
 
         #region Move & Run
         //set val of x using dir and speed
-        float xVal = direction * speed * 100 * Time.fixedDeltaTime;
+        
         //if running multiply with modifier
         if (isRunning)
             xVal *= runSpeedModifier;
@@ -99,13 +133,13 @@ public class Fox : MonoBehaviour
         //if looking right and clicked left (flip to left)
         if(facingRight && direction<0)
         {
-            transform.localScale = new Vector3(-4,4,4);
+            transform.localScale = new Vector3(-3,3,3);
             facingRight = false;
         }
         //if looking left and clicked right (flip to right)
         else if(!facingRight && direction>0)
         {
-            transform.localScale = new Vector3(4,4,4);
+            transform.localScale = new Vector3(3,3,3);
             facingRight = true;
         }
 
@@ -113,5 +147,6 @@ public class Fox : MonoBehaviour
         //Set float xVelocity according to the x value of the rigidbody velocity
         animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
         #endregion
+
     }
 }
