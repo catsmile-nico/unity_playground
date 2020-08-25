@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         //Reset game
         if (col.gameObject.name.Contains("Ground") && firstScore){
             Destroy(this.gameObject);
-            SceneManager.LoadScene("Wintegc_rigidbodyell-Clone"); //TODO: fix null exception on load
+            SceneManager.LoadScene("Winterbell-Clone"); //TODO: fix null exception on load
         }
     }
 
