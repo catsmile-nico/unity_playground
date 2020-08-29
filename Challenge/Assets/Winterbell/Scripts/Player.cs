@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-
     Rigidbody2D gc_rigidbody;
     Animator gc_animator;
     
@@ -20,6 +19,7 @@ public class Player : MonoBehaviour
 
     // States
     bool firstScore = false;
+    bool dead = false;
 
     void Awake() {
         gc_rigidbody = GetComponent<Rigidbody2D>();   
@@ -36,20 +36,24 @@ public class Player : MonoBehaviour
             col.gameObject.GetComponent<Asteroid>().destroyObject();
             firstScore = true;
             jump();
+            GameObject.Find("Scoreboard").GetComponent<Scoring>().addScore();
         } 
 
         if (col.gameObject.name.Contains("UFO")){
             col.gameObject.GetComponent<UFO>().destroyObject();
             jump();
+            GameObject.Find("Scoreboard").GetComponent<Scoring>().doubleScore();
         } 
     }
 
     void OnCollisionEnter2D(Collision2D col) {
 
         //Reset game
-        if (col.gameObject.name.Contains("Ground") && firstScore){
-            Destroy(this.gameObject);
-            SceneManager.LoadScene("Winterbell-Clone"); //TODO: fix null exception on load
+        if (col.gameObject.name.Contains("Ground") && firstScore && !dead){
+            //Destroy(this.gameObject);
+            //SceneManager.LoadScene("Winterbell-Clone"); //FIXED: fix null exception on load
+            GameObject.Find("LevelController").GetComponent<LevelController>().restartLevel();   
+            dead = true;
         }
     }
 
@@ -61,8 +65,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update() {
 
-        // disable after first jump 
-        if (Input.GetButtonDown("Jump") && !firstScore) 
+        // if (Input.GetButtonDown("Jump") && !firstScore) 
+        // FIXED: disable after first jump 
+        if (Input.GetMouseButtonDown(0) && !firstScore && transform.position.y <= -5.04f) 
             jump();
 
         // Out of screen mechanics

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+    public AudioClip audioClip;
+
     Rigidbody2D gc_rigidbody;
     Animator gc_animator;
     Collider2D gc_collider;
@@ -17,6 +19,7 @@ public class Asteroid : MonoBehaviour
     public void destroyObject() {
         gc_collider.enabled = false;
         gc_animator.SetBool("Alive", false);
+        AudioSource.PlayClipAtPoint(audioClip, transform.position);
     }
 
     void Update() {

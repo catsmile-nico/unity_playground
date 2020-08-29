@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UFO : MonoBehaviour
 {
+    public AudioClip audioClip;
+
     Rigidbody2D gc_rigidbody;
     Animator gc_animator;
     Collider2D gc_collider;
@@ -23,6 +25,7 @@ public class UFO : MonoBehaviour
         gc_collider.enabled = false;
         gc_animator.SetBool("Hit", true);
         hit = true;
+        AudioSource.PlayClipAtPoint(audioClip, transform.position);
     }
 
     // Update is called once per frame
@@ -42,7 +45,8 @@ public class UFO : MonoBehaviour
         } else 
             gc_rigidbody.velocity = new Vector3(0, -5f, 0);
 
-        if ((GameObject.Find("Player").gameObject.transform.position.y - transform.position.y) > 10)
-            Destroy(this.gameObject);
+        if (GameObject.Find("Player") != null)
+            if ((GameObject.Find("Player").gameObject.transform.position.y - transform.position.y) > 10)
+                Destroy(this.gameObject);
     }   
 }
