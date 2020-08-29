@@ -5,4 +5,4 @@
 Challenge - Create game scenes from scratch  
   
 ## TestBuilds  
-[Winterbell-clone](https://catsmile-nico.github.io/UnityPrac/TestBuilds/Winterbell-clone/index.html) # Controls: Mouse to move; Space for initial Jump  
+[Winterbell-clone](https://catsmile-nico.github.io/UnityPrac/TestBuilds/Winterbell-clone/index.html) # Controls: Mouse to move; Mouse click for initial Jump  
