@@ -17,7 +17,7 @@ public class LevelController : MonoBehaviour
     private float previousY = -3.5f;
     private float asteroidGap = 2.5f;
     private float difficultyScale = 1.1f; //1.1 is size of character
-    private float difficultyCap = 2.2f;
+    private float difficultyCap = 2.3f;
         
     // Start is called before the first frame update
     void Start() {

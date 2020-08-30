@@ -5,14 +5,14 @@ using TMPro;
 
 public class Scoring : MonoBehaviour
 {
-    public GameObject score100;    
+    public GameObject scorePoint;    
     public GameObject scoreDouble;    
     
     private TextMeshProUGUI gc_scoreText; 
     
     int playerScore = 0;
     const int scoreMultiplier = 2; // points multiplied get per UFO
-    const int scorePoints = 100; // points player get per asteroid
+    int scorePoints = 10; // points player get per asteroid
 
     
     void Awake() {
@@ -26,7 +26,9 @@ public class Scoring : MonoBehaviour
 
     public void addScore(){
         playerScore += scorePoints;
-        Instantiate(score100, ( new Vector3(transform.position.x,transform.position.y+10,transform.position.z) ), Quaternion.identity, transform);
+        GameObject scoreP = Instantiate(scorePoint, ( new Vector3(transform.position.x,transform.position.y+10,transform.position.z) ), Quaternion.identity, transform);
+        scoreP.GetComponent<TextMeshProUGUI>().text = "+" + scorePoints.ToString();
+        scorePoints += 10;
     }
 
     public void doubleScore(){
