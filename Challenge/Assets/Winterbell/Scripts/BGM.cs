@@ -11,23 +11,35 @@ public class BGM : MonoBehaviour
     [SerializeField] Sprite speakerImage1;
     [SerializeField] Sprite speakerImage2;
 
-    private bool playback = true;
+    private int playback = 1;
 
     // Start is called before the first frame update
     void Start() {
         audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
+
+        if (PlayerPrefs.HasKey("BGM")) {
+            playback = PlayerPrefs.GetInt("BGM");
+            if (playback != 1)
+                button.image.sprite = speakerImage2;
+        }
+    }
+
+    private void Update() {
+        if (playback != 1)
+            audioSource.Pause();
     }
 
     public void playbackControl(){
-        if (playback){
-            audioSource.Pause();
+        if (playback == 1){
+            //audioSource.Pause(); this line is in update to account for pause on scene restart
             button.image.sprite = speakerImage2;
-            playback = false;
-        } else{
-            audioSource.UnPause();
+            playback = 0;
+        } else {
+            audioSource.UnPause(); 
             button.image.sprite = speakerImage1;
-            playback = true;
+            playback = 1;
         }
+        PlayerPrefs.SetInt("BGM",playback);
     }
 }

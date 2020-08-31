@@ -10,7 +10,7 @@ public class Scoring : MonoBehaviour
     
     private TextMeshProUGUI gc_scoreText; 
     
-    int playerScore = 0;
+    ulong playerScore = 0;
     const int scoreMultiplier = 2; // points multiplied get per UFO
     int scorePoints = 10; // points player get per asteroid
 
@@ -25,14 +25,14 @@ public class Scoring : MonoBehaviour
     }
 
     public void addScore(){
-        playerScore += scorePoints;
+        playerScore += (ulong)scorePoints;
         GameObject scoreP = Instantiate(scorePoint, ( new Vector3(transform.position.x,transform.position.y+10,transform.position.z) ), Quaternion.identity, transform);
         scoreP.GetComponent<TextMeshProUGUI>().text = "+" + scorePoints.ToString();
         scorePoints += 10;
     }
 
     public void doubleScore(){
-        playerScore *= scoreMultiplier;
+        playerScore *= (ulong)scoreMultiplier;
         Instantiate(scoreDouble, ( new Vector3(transform.position.x,transform.position.y,transform.position.z) ), Quaternion.identity, transform);
         
     }
