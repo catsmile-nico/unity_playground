@@ -15,7 +15,7 @@ public class LevelController : MonoBehaviour
         
     // private float previousX; // TODO: pseudo random to make asteroids spawn in staircase pattern 
     private float previousY = -3.5f;
-    private float asteroidGap = 2.5f;
+    private float asteroidGap = 2f;
     private float difficultyScale = 1.1f; //1.1 is size of character
     private float difficultyCap = 2.3f;
         
