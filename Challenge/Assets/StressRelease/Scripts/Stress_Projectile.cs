@@ -39,7 +39,7 @@ public class Stress_Projectile : MonoBehaviour
         textObj.text = "PEW";
         textObj.fontStyle = FontStyle.Bold;
         textObj.fontSize = 17;
-        textObj.color = new Color32(48,96,121,255); //32,64,81 //https://colorhunt.co/palette/196240
+        textObj.color = new Color32(250,243,221,255); //https://colorhunt.co/palette/207335 //https://colorhunt.co/palette/207331
         textObj.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         textObj.alignment = TextAnchor.UpperCenter;
         textObj.horizontalOverflow = HorizontalWrapMode.Wrap;
