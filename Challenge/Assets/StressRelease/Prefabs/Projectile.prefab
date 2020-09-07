@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7041c3489b2aca94392f0e79f088471e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionOffset: 0.55
+  explosionOffsetMtp: 0.3
   rectMultiplier: 72
   bulletSpeed: 8
   explosionPF: {fileID: 4457642524542175351, guid: 6fdcb20257dc4c0489d01b4d7b8ded0f, type: 3}

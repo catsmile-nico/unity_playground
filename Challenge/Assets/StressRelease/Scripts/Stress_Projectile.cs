@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Stress_Projectile : MonoBehaviour
 {
+    [SerializeField] float explosionOffset = 0;
+    [SerializeField] float explosionOffsetMtp = 0;
     [SerializeField] float rectMultiplier = 0;
     [SerializeField] float bulletSpeed = 0;
 
@@ -33,9 +35,9 @@ public class Stress_Projectile : MonoBehaviour
         textObj.text = "PEW";
         textObj.fontStyle = FontStyle.Bold;
         textObj.fontSize = 17;
-        textObj.color = Color.red;
+        textObj.color = new Color32(48,96,121,255); //32,64,81 //https://colorhunt.co/palette/196240
         textObj.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        textObj.alignment = TextAnchor.MiddleCenter;
+        textObj.alignment = TextAnchor.UpperCenter;
         textObj.horizontalOverflow = HorizontalWrapMode.Wrap;
     }
 
@@ -44,7 +46,7 @@ public class Stress_Projectile : MonoBehaviour
     }
 
     void text_move(float x, float y){
-        textTransform.anchoredPosition = new Vector2(x, y+20);
+        textTransform.anchoredPosition = new Vector2(x, y-20f);
     }
 
     void Awake()    {
@@ -80,8 +82,8 @@ public class Stress_Projectile : MonoBehaviour
     IEnumerator explosion(bool setParent){
         int tv_explodeCount = textObj.text.Length;
         Transform tv_explodeCheck = null;
-        for(int i = tv_explodeCount-1; i >= 0 ; i--){
-            tv_explodeCheck = Instantiate(explosionPF,new Vector3(this.transform.position.x,this.transform.position.y-0.4f+(i*0.3f),0),Quaternion.identity);
+        for(int i = 0 ; i < tv_explodeCount ; i++){
+            tv_explodeCheck = Instantiate(explosionPF,new Vector3(this.transform.position.x,this.transform.position.y+explosionOffset-(i*explosionOffsetMtp),0),Quaternion.identity);
             if (setParent)
                 tv_explodeCheck.transform.SetParent(this.gameObject.transform);
             yield return new WaitForSeconds(0.1f);
