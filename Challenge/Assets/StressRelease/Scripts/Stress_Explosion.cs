@@ -4,27 +4,19 @@ using UnityEngine;
 
 public class Stress_Explosion : MonoBehaviour
 {
-    Animator anim;
-
     public AudioClip audioClip;
-    // AudioSource audio;
-    
+
+    Animator animGC;
     void Start()    {
-        anim = GetComponent<Animator>();
-        //Explosion noise control   
-        AudioSource.PlayClipAtPoint(audioClip, transform.position, 0.5f + (1%GameObject.FindGameObjectsWithTag("Explosion").Length/1200f));
-        // Mathf.Abs(GameObject.FindGameObjectsWithTag("Explosion").Length/100)
-        // audio = GetComponent<AudioSource>();
-        // audio.Play();
+        animGC = GetComponent<Animator>();
+        //Explosion noise control //Screen explosion limit 1200, WEBGL Explosion noise limit 60, Unity editor noise limit 120
+        if (Random.Range(1,Mathf.Abs(GameObject.FindGameObjectsWithTag("Explosion").Length/30)) == 1)
+            AudioSource.PlayClipAtPoint(audioClip, transform.position, 1.0f);
+    
     }
 
-    // Update is called once per frame
     void Update()    {
-        // if (GameObject.FindGameObjectsWithTag("Explosion").Length > 20) 
-        //     audio.mute = true;
-        // else
-        //     audio.mute = false;
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        if (animGC.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
             Destroy(this.gameObject);
     }
 }

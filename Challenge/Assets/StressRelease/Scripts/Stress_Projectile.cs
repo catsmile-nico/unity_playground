@@ -63,7 +63,7 @@ public class Stress_Projectile : MonoBehaviour
         gc_rigidbody.velocity = new Vector3(0, bulletSpeed, 0);
 
         //Set projectile lifetime when exit ceiling; or when text is empty
-        if(this.transform.position.y > 20 || textObj.text.Length == 0){
+        if(this.transform.position.y > 10 || textObj.text.Length == 0){
             Destroy(textGO.gameObject);
             Destroy(this.gameObject);
         }
@@ -96,6 +96,7 @@ public class Stress_Projectile : MonoBehaviour
     void OnCollisionStay2D(Collision2D col) {
         //Condition to explode: Collided, Not exploded (by ExplodeAll command), Explode All command is true, colliding with ceiling
         if(collided && !exploded && explodeAll && col.gameObject.name.Contains("Ceiling")){
+            bulletSpeed /= 4;
             gc_collider.enabled = false;
             exploded = true; //prevent multiple explosion
             StartCoroutine(explosion(false, 0.3f));
