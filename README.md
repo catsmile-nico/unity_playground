@@ -7,15 +7,15 @@ Challenge - Create game scenes from scratch
 TestBuilds - Browser playable WebGL builds
   
 ## TestBuilds  
-<img src="TestBuilds/winter_sample1.gif" alt="winter gameplay" width="480" height="320">  
+<img src="TestBuilds/winter_sample1.gif" alt="winter gameplay" width="450" height="280">  
 
-[Play Winterbell-clone](https://catsmile-nico.github.io/UnityPrac/TestBuilds/Winterbell-clone/index.html)  
+[Play Winterbell-clone](https://catsmile-nico.github.io/Unity-Practice/TestBuilds/Winterbell-clone/index.html)  
 > [ CONTROLS ] Mouse to move; Mouse click for initial Jump  
 > [ HOW TO PLAY ] 1. Jump once,  2. Move character with mouse,  3. Hit Asteroids to continue jumping for as long as you can.  
   
-<img src="TestBuilds/stress_sample.gif" alt="stress gameplay" width="480" height="320"/>
+<img src="TestBuilds/stress_sample.gif" alt="stress gameplay" width="450" height="280"/>
 
-[Play StressExplosion](https://catsmile-nico.github.io/UnityPrac/TestBuilds/StressExplosion/index.html)  
+[Play StressExplosion](https://catsmile-nico.github.io/Unity-Practice/TestBuilds/StressExplosion/index.html)  
 > [ CONTROLS ] LEFT/RIGHT or A/D to move; SPACE to shoot;  ESC to clearscreen  
 > [ HOW TO PLAY ] 1. Enter text into textbox,  2. Shoot your "stress",  3. Relieve stress through explosions created.  
 > [ NOTE ] Game is intended for Japanese language, but currently IME not supported on WEBGL  
