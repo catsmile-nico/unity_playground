@@ -10,7 +10,7 @@ public class Stress_Projectile : MonoBehaviour
     [SerializeField] float rectMultiplier = 0;
     [SerializeField] float bulletSpeed = 0;
 
-    [SerializeField] Transform explosionPF;
+    [SerializeField] Transform explosionPF = null;
 
     //Text obj
     GameObject textGO;

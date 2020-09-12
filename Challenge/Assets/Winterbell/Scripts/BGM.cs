@@ -8,8 +8,8 @@ public class BGM : MonoBehaviour
     AudioSource audioSource;
     Button button;
 
-    [SerializeField] Sprite speakerImage1;
-    [SerializeField] Sprite speakerImage2;
+    [SerializeField] Sprite speakerImage1 = null;
+    [SerializeField] Sprite speakerImage2 = null;
 
     private int playback = 1;
 

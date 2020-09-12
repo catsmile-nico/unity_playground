@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Stress_Player : MonoBehaviour
 {
-    [SerializeField] UnityEngine.UI.InputField textInput;
+    [SerializeField] UnityEngine.UI.InputField textInput = null;
     [SerializeField] float speed = 0;
     [SerializeField] float rectMultiplier = 0;
 
-    [SerializeField] Transform textProj;
+    [SerializeField] Transform textProj = null;
 
     public bool explosion = false;
 
