@@ -10,10 +10,10 @@ public class Fox : MonoBehaviour
     // Private
     Rigidbody2D rb;
     Animator animator;
-    [SerializeField] Collider2D standingCollider;
-    [SerializeField] Transform groundCheckCollider;
-    [SerializeField] Transform overheadCheckCollider;
-    [SerializeField] LayerMask groundLayer;
+    [SerializeField] Collider2D standingCollider = null ;
+    [SerializeField] Transform groundCheckCollider = null;
+    [SerializeField] Transform overheadCheckCollider = null;
+    [SerializeField] LayerMask groundLayer = 0;
     
     const float groundCheckRadius = 0.2f;
     const float overheadCheckRadius = 0.1f;
