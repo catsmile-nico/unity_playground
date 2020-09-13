@@ -3,8 +3,8 @@ Languages shown as javascript due to WebGL builds
   
 ## Contents
 Challenge - Create game scenes from scratch  
-Playables - Browser playable WebGL builds
-TestScenes - Testing playground for unplayable scenes (Tutorials, Unity features/scripts, etc.)
+Playables - Browser playable WebGL builds  
+TestScenes - Testing playground for unplayable scenes (Tutorials, Unity features/scripts, etc.)  
   
 ## Playables  
 <img src="Playables/winter_sample1.gif" alt="winter gameplay" width="450" height="280">  
