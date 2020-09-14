@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6916240652102892620}
   m_Layer: 0
   m_Name: Apple
-  m_TagString: Apple
+  m_TagString: AP_Apple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,9 +98,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.14982712}
+  m_Offset: {x: -0.0038564205, y: -0.1392811}
   serializedVersion: 2
-  m_Radius: 0.582646
+  m_Radius: 0.5775046
 --- !u!50 &6916240652102892624
 Rigidbody2D:
   serializedVersion: 4
@@ -134,4 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379b367b1792d824ea4db8452164ab13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounce: 15
+  bounce: 10
+  audioClip_applePen: {fileID: 8300000, guid: ce777f6b990107e489882b73c126db4a, type: 3}

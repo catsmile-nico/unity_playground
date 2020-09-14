@@ -5,7 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Explosion
-  - Apple
+  - AP_Wall
+  - AP_Walled
+  - AP_Apple
+  - AP_Pen
+  - AP_Dead
+  - AP_ApplePen
   layers:
   - Default
   - TransparentFX

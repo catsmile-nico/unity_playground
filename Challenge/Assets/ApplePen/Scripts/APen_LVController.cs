@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class APen_LVController : MonoBehaviour
 {
-    //Unity field
-    [SerializeField] Transform apple;
-
-    //Game var
-    float fieldRange = 0; //-7~0
+    //Editor var
+    [SerializeField] Transform apple = null;
+    [SerializeField] Transform pen = null;
     
     void Start() {
         spawnApple();
     }
 
     void Update() {
-        if (GameObject.FindGameObjectsWithTag("Apple").Length < 1)
+        if (GameObject.FindGameObjectsWithTag("AP_Apple").Length < 1)
             spawnApple();
-
+        if (GameObject.FindGameObjectsWithTag("AP_Pen").Length < 1)
+            spawnPen();
     }
 
     void spawnApple(){
-        Instantiate(apple, new Vector3(Random.Range(-7,0),-2,0f),Quaternion.identity);
+        Instantiate(apple, new Vector3(Random.Range(-3,2),-2,0f),Quaternion.identity);
+    }
+
+    void spawnPen(){
+        Instantiate(pen, new Vector3(7.5f,4f,0f),Quaternion.identity);
     }
 }
