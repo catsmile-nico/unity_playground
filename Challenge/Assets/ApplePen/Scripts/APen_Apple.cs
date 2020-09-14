@@ -33,7 +33,7 @@ public class APen_Apple : MonoBehaviour
         if (transform.position.y < -3f || transform.position.x > 12 || transform.position.x < -12)
             Destroy(this.gameObject);
 
-        if (penned && transform.position.x < -7.8f){
+        if (penned && transform.position.x < -7.9f){
             rigidbodyGC.velocity = new Vector2(0, 0);
             rigidbodyGC.constraints = RigidbodyConstraints2D.FreezeAll;
         }
