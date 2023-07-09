@@ -1,5 +1,4 @@
 # Unity practice in C#  
-Languages shown as javascript due to WebGL builds  
   
 ## Contents
 Challenge - Create game scenes from scratch  
@@ -40,4 +39,5 @@ DEV FOCUS  Recreate existing game.
 [NOTE     ] Game is intended for Japanese language, but currently IME not supported on WEBGL  
 ```
   
-DISCLAIMER: Most asset(Art/Sound) used are simply placeholders to aid in faster development. I will remove them if requested however.  
+DISCLAIMER: Most asset(Art/Sound) used are simply placeholders to aid in faster development. I will remove them if requested.  
+Languages shown as javascript due to WebGL builds  
